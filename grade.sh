@@ -1,4 +1,4 @@
-CPATH=".;lib/hamcrest-core-1.3.jar;lib/junit-4.13.2.jar"
+CPATH=.:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar *.java
 rm -rf student-submission
 rm -rf grading-area
 rm -rf test-output.txt
@@ -29,7 +29,7 @@ cp -r lib grading-area
 #javac -cp $CPATH */*.java 
 cd grading-area
 
-javac -cp ".;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar" *.java 
+javac -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar *.java
 code=$?
 if [[ $code != 0 ]]
 then
@@ -37,7 +37,7 @@ then
     exit
 fi
 
-java -cp ".;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore TestListExamples > test-output.txt
+java -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore TestListExamples > test-output.txt
 # output=`find test-output.txt`
 # cat $output
 line=`grep 'Tests run:' test-output.txt`
